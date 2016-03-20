@@ -25,9 +25,10 @@
 <head>
 	<style>
 	#editorCanvas{
-		width:100%;
+		width:70%;
 		background-color:gray;
-		position:relative;
+		position:absolute;
+		right:0;
 	}
 	#editorCanvas>#mainimage{
 		width:100%;
@@ -68,6 +69,7 @@
 		height:100%;
 		width:100px;
 		background-color: gray;
+		z-index: 3;
 	}
 	#zonePreview{
 		pointer-events:none;
@@ -169,19 +171,34 @@ $(document).ready(function(){
 		 cvs.height=$("#editorCanvas>#mainimage").height();
 		 $("#editorCanvas").css({height:cvs.height});
 	 }
-	 respond();
-	 savefile=function(){
+	respond();
+	savefile=function(){
+		zoneFileArray={"img":"","zones":[]};
+		$(".zone").each(function(){
+			zoneFileArray.zones.push({
+	      "id":$(this).attr("data-index"),
+	      "left":100.00*parseInt($(this).css("left"))/cvs.width,
+	      "top":100.00*parseInt($(this).css("top"))/cvs.height,
+	      "width":100.00*parseInt($(this).css("width"))/cvs.width,
+	      "height":100.00*parseInt($(this).css("height"))/cvs.height,
+	      "classes":"",
+	      "type":"link",
+	      "href":$(this).html()
+	    });
+		});
+		zoneFileArray.img=$("#mainimage").attr("src");
+		console.log(zoneFileArray);
 		$(".selected").removeClass("selected");
 		$.get( "editor/postsave.php", {
-			 post: "<?php echo $_GET['post']; ?>", content: $("#editorCanvas").html()
+			post: "<?php echo $_GET['post']; ?>", content: $("#editorCanvas").html()
 		}).done(function( data ) {
 			console.log( "Data Loaded: " + data );
 		}).fail(function(e){
 			console.log("error: "+e.responseText);
 			console.log(e);
 		}).always(function() {
-    	console.log( "finished" );
-  	});
+			console.log( "finished" );
+		});
 	}
 	updateToolbox=function (){
 		$("#toolbox > #coords").html("x:"+mouse.x+"% y:"+mouse.y+"%");

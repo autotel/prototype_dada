@@ -1,0 +1,25 @@
+{
+  "img":"webcontents/joaquin/20160304/index.jpg",
+  "zones":[
+    {
+      "id":0,
+      "left":"47.0909%",
+      "top":"48.9104%",
+      "width":"0.181818%",
+      "height": "0.242131%",
+      "classes":"",
+      "type":"link",
+      "href":"http://google.com"
+    },{
+      "id":1,
+      "left":"80.0909%",
+      "top":"80.9104%",
+      "width":"1.181818%",
+      "height": "2%",
+      "classes":"",
+      "type":"link",
+      "href":"http://google.com"
+    }
+  ],
+  "author":"joaquin"
+}

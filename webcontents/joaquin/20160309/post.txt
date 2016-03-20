@@ -1,3 +1,24 @@
 
 
-	<img id="mainimage" src="webcontents/joaquin/20160309/index.jpg"><div style="opacity: 1; left: 10.3636%; top: 33.8942%; width: 0.363636%; height: 2.64423%;" class="" id="zonePreview"></div><div style="left: 2.72727%; top: 23.3173%; width: 16.3636%; height: 13.7019%;" class="zone" data-index="0" id="d0"></div><div style="left: 44%; top: 31.25%; width: 15.6364%; height: 21.1538%;" class="zone" data-index="1" id="d1"></div><div style="left: 10.3636%; top: 33.8942%; width: 0%; height: 0%;" class="zone" data-index="2" id="d2"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<img id="mainimage" src="webcontents/joaquin/20160309/index.jpg">
+	<div style="opacity: 0; left: 82.5397%; top: 82.5175%; width: 1.5873%; height: 0.699301%;" class="" id="zonePreview"></div>
+	<div style="left: 2.72727%; top: 23.3173%; width: 16.3636%; height: 13.7019%; pointer-events: none;" class="zone" data-index="0" id="d0"></div>
+	<div style="left: 44%; top: 31.25%; width: 15.6364%; height: 21.1538%; pointer-events: none;" class="zone" data-index="1" id="d1"></div>
+	<div style="left: 10.3636%; top: 33.8942%; width: 0%; height: 0%; pointer-events: none;" class="zone" data-index="2" id="d2"></div>
+	<div class="" id="zonePreview"></div>
+	<div style="left: 0.515464%; top: 45.0512%; width: 21.3918%; height: 8.19113%; pointer-events: none;" class="zone" data-index="3" id="d3"></div>
+	<div class="" id="zonePreview"></div>
+	<div class="" id="zonePreview"></div><div class="" id="zonePreview"></div>
+	<div class="" id="zonePreview"></div><div class="" id="zonePreview"></div><div style="left: 23.2804%; top: 67.4825%; width: 10.3175%; height: 13.2867%; pointer-events: none;" class="zone" data-index="4" id="d4"></div><div style="left: 65.3439%; top: 82.5175%; width: 15.6085%; height: 14.3357%; pointer-events: none;" class="zone" data-index="5" id="d5"></div><div style="left: 82.5397%; top: 61.8881%; width: 15.873%; height: 19.9301%; pointer-events: none;" class="zone" data-index="6" id="d6"></div><div style="left: 82.5397%; top: 82.5175%; width: 15.873%; height: 16.4336%; pointer-events: none;" class="zone" data-index="7" id="d7"></div>
