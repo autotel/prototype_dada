@@ -8,7 +8,7 @@
 
 	*/
 	require_once("../models/config.php");
-
+	require_once("../postFileManagement.php");
 	/*
 	* Uncomment the "else" clause below if e.g. userpie is not at the root of your site.
 	*/
@@ -24,6 +24,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<style>
+	<?php
+	include "../generalZoneStyle.css";
+	?>
 	#editorCanvas{
 		width:70%;
 		background-color:gray;
@@ -46,6 +49,9 @@
 	#editorCanvas>.zone{
 		border-left:solid 7px;
 		margin-left: -7px;
+	}
+	#editorCanvas>.zone>.zonelink{
+		pointer-events:none;
 	}
 	#editorCanvas>.zone:hover{
 		background-color:rgba(0,0,0,0.2);
@@ -102,6 +108,7 @@
 		<input id="css_w" type="text" class="css_field"></input>
 		<input id="css_h" type="text" class="css_field"></input>
 		<input id="css_rot" type="text" class="css_field"></input>
+		<input id="css_href" type="text" class="css_field"></input>
 		<div id="div_remove" class="toolbox_button">remove zone</div>
 	</div>
 	<div id="selectedoptions">
@@ -110,14 +117,8 @@
 <div id="editorCanvas">
 
 	<?php
-	echo "<!--";
-	$load=file_get_contents('../webcontents/'.str_replace(" ","-", $loggedInUser->display_username)."/".$_GET['post']."/post.txt");
-	echo "-->";
-	if($load){
-		echo $load;
-	}else{
-			echo'<img id="mainimage" src="webcontents/'.str_replace(" ","-", $loggedInUser->display_username)."/".$_GET['post'].'/index.jpg">';
-	}
+	echo getMyPost($_GET['post']);
+
 	?>
 </div>
 
@@ -140,7 +141,7 @@ var tool="zone";
 var cvs={width:0,height:0};
 
 respond=function(){};
-pixiInit=function(){};
+// pixiInit=function(){};
 // graphics = new PIXI.Graphics();
 //graphics.blendMode = PIXI.BLEND_MODES.ADD;
 // Autodetect, create and append the renderer to the body element
@@ -155,12 +156,12 @@ pixiInit=function(){};
 // ...
 
 // Start animating
-animate();
-function animate() {
-		//Render the stage
-		//renderer.render(stage);
-		requestAnimationFrame(animate);
-}
+// animate();
+// function animate() {
+// 		//Render the stage
+// 		//renderer.render(stage);
+// 		requestAnimationFrame(animate);
+// }
 
 //}
 $(document).ready(function(){
@@ -177,21 +178,23 @@ $(document).ready(function(){
 		$(".zone").each(function(){
 			zoneFileArray.zones.push({
 	      "id":$(this).attr("data-index"),
-	      "left":100.00*parseInt($(this).css("left"))/cvs.width,
-	      "top":100.00*parseInt($(this).css("top"))/cvs.height,
-	      "width":100.00*parseInt($(this).css("width"))/cvs.width,
-	      "height":100.00*parseInt($(this).css("height"))/cvs.height,
+	      "left":100.00*parseInt($(this).css("left"))/cvs.width+"%",
+	      "top":100.00*parseInt($(this).css("top"))/cvs.height+"%",
+	      "width":100.00*parseInt($(this).css("width"))/cvs.width+"%",
+	      "height":100.00*parseInt($(this).css("height"))/cvs.height+"%",
 	      "classes":"",
 	      "type":"link",
-	      "href":$(this).html()
+	      "href":$(this).attr("data-href")
 	    });
 		});
 		zoneFileArray.img=$("#mainimage").attr("src");
+		postdata={
+			content:zoneFileArray,
+			file:"<?php echo $_GET['post']; ?>",
+		}
 		console.log(zoneFileArray);
 		$(".selected").removeClass("selected");
-		$.get( "editor/postsave.php", {
-			post: "<?php echo $_GET['post']; ?>", content: $("#editorCanvas").html()
-		}).done(function( data ) {
+		$.post( "editor/postsave.php",postdata).done(function( data ) {
 			console.log( "Data Loaded: " + data );
 		}).fail(function(e){
 			console.log("error: "+e.responseText);
@@ -199,6 +202,7 @@ $(document).ready(function(){
 		}).always(function() {
 			console.log( "finished" );
 		});
+
 	}
 	updateToolbox=function (){
 		$("#toolbox > #coords").html("x:"+mouse.x+"% y:"+mouse.y+"%");

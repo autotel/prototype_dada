@@ -8,85 +8,61 @@
 
 	*/
 	require_once("../models/config.php");
-
+	if(isset($_GET['f'])){
+		$pagedisplay=$_GET['f'];
+	}else{
+		$pagedisplay="core/index";
+	}
 
 ?>
 <head>
 	<style>
+	body{
+		margin:0;
+		padding:0;
+		background-image: url("../../webcontents/background.jpg");
+	}
 	#content{
-		width:100%;
+		width: 87%;
+		left: 6%;
+		position: absolute;
+		top: 40px;
+		box-shadow: 0 20px 20px 2px #000000;
+	}
+	<?php
+	include "../generalZoneStyle.css";
+	?>
+	#liveCanvas>#mainimage{
+	  width:100%;
+	  pointer-events:none;
+	  position:absolute;
 	}
 	#liveCanvas{
-		width:100%;
-		background-color:gray;
-		position:relative;
-	}
-	#liveCanvas>#mainimage{
-		width:100%;
-		pointer-events:none;
-		position:absolute;
-	}
-	#liveCanvas>.zone,#zonePreview{
-		position:absolute;
-	}
-	#liveCanvas>.zone{
-		background-color: transparent;
-		transition: background-color 0.5s;
-	}
-	#liveCanvas>.zone:hover{
-		background-color:rgba(0,0,0,0.2);
-		cursor:pointer;
-		transition: background-color 0.5s;
-	}
-	#liveCanvas>.selected{
-		background-color:transparent;
-		border:solid 1px red;
-		border-left:solid 7px;
-		margin-left: -7px;
-		color:red;
-		cursor:pointer;
-		transition:border color background-color0.5s;
+	  width:100%;
+	  background-color:gray;
+	  position:relative;
 	}
 
-	#toolbox{
-		position:fixed;
-		left:0px;
-		top:100px;
-		height:100%;
-		width:100px;
-		background-color: gray;
-	}
-	#zonePreview{
-		pointer-events:none;
-	}
-	.css_field{
-		width:40px;
-		display:block;
-	}
 	</style>
 	<script src="http://autotel.co/wp-content/uploads/2015/11/pixi.min_.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $websiteName; ?> Editor</title>
+<title><?php echo $websiteName.' '.$pagedisplay; ?></title>
 <?php require_once("../head_inc.php"); ?>
 
 
 </head>
 <body>
-<?php require_once("../navbar.php"); ?>
+<?php
+
+require_once("../navbar.php");
+require_once("../postFileManagement.php");
+
+?>
 <div id="content">
 	<div id="liveCanvas">
-
 		<?php
-		if(isset($_GET['f'])){
-			$pagedisplay=$_GET['f'];
-		}else{
-			$pagedisplay="core/index";
-		}
-		echo "<!--";
-		$load=file_get_contents('../webcontents/'.$pagedisplay."/post.txt");
-		echo "-->";
-		echo $load;
 
+		echo getCorePost($pagedisplay);
 		?>
 	</div>
 </div>

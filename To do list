@@ -1,0 +1,4 @@
+-Tweak the post storage system to be database based instead of file based
+-Order the files in a meaningful and understandable way
+-Make the htaccess system to distinguish between user posts and core posts.
+-Order the styling and make the post-making tool friendlier
