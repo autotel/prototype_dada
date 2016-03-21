@@ -17,6 +17,7 @@
 	$db_name = "testing";
 	$db_port = "";
 	$db_table_prefix = "userpie_";
+	$db_content_table="dada_contents";
 
 	$langauge = "en";
 	$reportErrors="false";

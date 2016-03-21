@@ -117,7 +117,10 @@
 <div id="editorCanvas">
 
 	<?php
-	echo getMyPost($_GET['post']);
+	//if user admin:
+	echo getPostByUrl($_GET['post']);
+	//if user not admin:
+//	echo getMyPost($_GET['post']);
 
 	?>
 </div>

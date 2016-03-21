@@ -10,8 +10,9 @@ zone types:
 //function to open a post content file
 function loadZones($file){
   //echo "loading file\n";
-  $j = file_get_contents($file);
-  if($j){
+
+  if(file_exists($file)){
+    $j = file_get_contents($file);
     //echo "hik".$j;
     return(bakeZoneJson($j));
   }else{
