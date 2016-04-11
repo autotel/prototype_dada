@@ -25,12 +25,14 @@ if(is_array($db->sql_connect(
 		`creation_date` int(11) NOT NULL,
 		`edition_date` int(11) NOT NULL,
 		`last_visit` int(11) NOT NULL,
-		`owner_id` int(11) NOT NULL,
+		`creator_id` int(11) NOT NULL,
+		`allowed_groups` varchar(30) NOT NULL,
+		`allowed_users` varchar(30) NOT NULL,
 		`url` varchar(225) NOT NULL,
 		`content` LONGTEXT,
 		`postmeta` LONGTEXT,
 		PRIMARY KEY (`post_id`),
-		FOREIGN KEY (`owner_id`) REFERENCES userpie_users(`user_id`)
+		FOREIGN KEY (`creator_id`) REFERENCES userpie_users(`user_id`)
 		) engine=myisam DEFAULT charset=latin1 auto_increment=2 ;
 	";
 

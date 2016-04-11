@@ -6,18 +6,26 @@ zone types:
   video
   custom
 */
-
+require_once("models/settings.php");
+require_once("models/config.php");
+require_once("models/funcs.content.php");
 //function to open a post content file
 function loadZones($file){
-  //echo "loading file\n";
-
-  if(file_exists($file)){
-    $j = file_get_contents($file);
-    //echo "hik".$j;
-    return(bakeZoneJson($j));
-  }else{
-    return false;
+  global $db_content_table;
+  contents_connect();
+  //pendant: check user permissions for the post after loading
+  // $currentUser=$loggedInUser->user_id;
+  // taskstack_connect();
+	$sql = "SELECT *
+	FROM `$db_content_table`
+	WHERE (url=$file)
+	ORDER BY id DESC
+	LIMIT 1";
+  if(!$result = $content_conn->query($sql)){
+  		die('There was an error running the query [' . $content_conn->error . ']');
   }
+  $j = file_get_contents($file);
+  return(bakeZoneJson($result->fetch_assoc()['content']));
 }
 
 //function to create HTML out of the Json that determine the post content
