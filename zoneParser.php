@@ -10,21 +10,9 @@ require_once("models/settings.php");
 require_once("models/config.php");
 require_once("models/funcs.content.php");
 //function to open a post content file
-function loadZones($file){
-  global $db_content_table;
-  contents_connect();
-  //pendant: check user permissions for the post after loading
-  // $currentUser=$loggedInUser->user_id;
-  // taskstack_connect();
-	$sql = "SELECT *
-	FROM `$db_content_table`
-	WHERE (url=$file)
-	ORDER BY id DESC
-	LIMIT 1";
-  if(!$result = $content_conn->query($sql)){
-  		die('There was an error running the query [' . $content_conn->error . ']');
-  }
-  $j = file_get_contents($file);
+function loadZones($url){
+
+  $j = getUrlContent($url);
   return(bakeZoneJson($result->fetch_assoc()['content']));
 }
 
