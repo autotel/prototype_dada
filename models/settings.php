@@ -17,14 +17,14 @@
 	$db_name = "testing";
 	$db_port = "";
 	$db_table_prefix = "userpie_";
-	$db_content_table="dada_contents";
+	$db_content_table="imageWeb_contents";
 
 	$langauge = "en";
 	$reportErrors="false";
 
 
 	//Generic website variables
-	$websiteName = "DADA";
+	$websiteName = "imageWeb";
 	$websiteUrl = "http://localhost/prototype_dada/"; //including trailing slash
 
 	//Do you wish UserPie to send out emails for confirmation of registration?
@@ -38,7 +38,7 @@
 	$resend_activation_threshold = 1;
 
 	//Tagged onto our outgoing emails
-	$emailAddress = "admin@autotel.co";
+	$emailAddress = "admin@yourdoma.in";
 
 	//Date format used on email's
 	$emailDate = date("l \\t\h\e jS");

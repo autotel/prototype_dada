@@ -65,7 +65,14 @@ if (!isset($loggedInUser)){
 }
 // $hand=fopen('../webcontents/'.str_replace(" ","-", $loggedInUser->display_username)."/".$_GET['post']."/post.txt","w");
 print_r($_POST);
-writeUrlContent("testurl/test",json_encode ($_POST['content']));
-
-
+//pendiente: hacer seguridad para que no administradores no puedan cambiar los core
+$hand=fopen('../webcontents/'.$_POST['file']."/post.json","w");
+if($hand){
+	//$_GET["content"]=preg_replace('/<!--[\W\w]*?-->/',"",$_GET["content"]);
+	fwrite($hand,indent(json_encode ($_POST['content'])));
+	fclose($hand);
+}else{
+	echo("couldnt fopen post file");
+}
+//print_r($_GET);
 ?>
