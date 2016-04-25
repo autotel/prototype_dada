@@ -28,7 +28,39 @@
       width:120px;
       display:inline-block;
       margin:10px;
+
     }
+    .imageItem:nth-child(3n+1){
+      animation-name: fst;
+      animation-duration: 15s;
+      animation-iteration-count: fst;
+    }
+    .imageItem:nth-child(3n+2){
+      animation-name: scnd;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+    }
+    .imageItem:nth-child(3n+3){
+      animation-name: trd;
+      animation-duration: 28s;
+      animation-iteration-count: infinite;
+    }
+    @keyframes fst {
+      0%   {padding-left:-10px; padding-top: -10px;}
+      50% {padding-left:10px; padding-top: 10px;}
+      100%   {padding-left:-10px; padding-top: -10px;}
+    }
+    @keyframes scnd {
+      0%   {padding-left:50px; padding-top: 3px;}
+      50% {padding-left:-10px; padding-top: -10px;}
+      100%   {padding-left:50px; padding-top: 3px;}
+    }
+    @keyframes trd {
+      0%   {padding-left:20px; padding-top: 5px;}
+      50% {padding-left:5px; padding-top: -6px;}
+      100%   {padding-left:20px; padding-top: 5px;}
+    }
+
     .imageItemImage{
       width:100%;
     }
@@ -39,6 +71,17 @@
     .fill{
       max-width: 100%;
     }
+    .frameInDisguise{
+      position:absolute;
+      width:100%;
+      left:0;
+      frameborder:0;
+      border:0;
+      height:2300px;
+    }
+    .frameInDisguise .ss-header-image-container{
+      display:none!important;
+    }
     #sidebar-wrapper{
       position:fixed;
       z-index: 3;
@@ -47,6 +90,7 @@
       transition: 0.4s;
       width:140px;
       left:-100px;
+      display:none;
     }
     #sidebar-wrapper:hover{
       left:0;
@@ -76,13 +120,13 @@
     <img src="contents/dadaheader.png" class="fill" >
   </div>
   <div class="container">
-    <div class="itemContainer" name="images">
+    <div class="itemContainer" name="images" style="height:800px">
     <?php
+    // error_reporting(E_ALL);
     $contents=json_decode(file_get_contents("contents.json"),true);
     foreach ($contents as $key => $content) {
       $end="";
       if($key=="parallaxImages"){
-        // echo '<h1>'.$key.'</h1>';
         foreach ($content as $subkey => $item) {
           echo '<div class="item imageItem"><div data-z="'.(rand(-7,2)).'">';
           echo '<h2 class="imageTitle">'.$item['name'].'</h2>';
@@ -111,8 +155,11 @@
     ?>
   </div>
   <script>
+  pecera=function(){
+    var items;
+  }
   $(document).ready(function(){
-    var msnry = new Masonry( '.itemContainer');
+     var msnry = new Masonry( '.itemContainer');
     $('body').scrollNav({
       sections: '.section',
       subSections: false,

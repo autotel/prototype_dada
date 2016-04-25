@@ -27,7 +27,7 @@ ini_set('display_startup_errors', TRUE);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $websiteName; ?></title>
-<?php require_once("head_inc.php"); ?>
+<?php require_once("inheader.php"); ?>
 
 
 </head>

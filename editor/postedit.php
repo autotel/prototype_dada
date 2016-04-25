@@ -7,8 +7,11 @@
 
 
 	*/
-	require_once("../models/config.php");
-	require_once("../postFileManagement.php");
+	require_once("absolutedir.php");
+	require_once("models/config.php");
+	require_once("postFileManagement.php");
+	require_once("templates/zones.php");
+	$pagedisplay="post editor";
 	/*
 	* Uncomment the "else" clause below if e.g. userpie is not at the root of your site.
 	*/
@@ -23,10 +26,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<?php require_once("inheader.php"); ?>
 	<style>
-	<?php
-	include "../generalZoneStyle.css";
-	?>
+	<?php	include_once("generalZoneStyle.css");	?>
 	#editorCanvas{
 		width:70%;
 		background-color:gray;
@@ -85,15 +87,13 @@
 		display:block;
 	}
 	</style>
-	<script src="http://autotel.co/wp-content/uploads/2015/11/pixi.min_.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $websiteName; ?> Editor</title>
-<?php require_once("../head_inc.php"); ?>
 
 
 </head>
 <body>
-<?php require_once("../navbar.php"); ?>
+<?php require_once("navbar.php"); ?>
 	<div id="content">
 <h1>Post editor page</h1>
 <div id="toolbox">
@@ -118,7 +118,9 @@
 
 	<?php
 	//if user admin:
-	echo getPostByUrl($_GET['post']);
+	if(existsUrlContent($_GET['post'])){
+		echo getPostByUrl($_GET['post']);
+	}
 	//if user not admin:
 //	echo getMyPost($_GET['post']);
 
@@ -144,29 +146,7 @@ var tool="zone";
 var cvs={width:0,height:0};
 
 respond=function(){};
-// pixiInit=function(){};
-// graphics = new PIXI.Graphics();
-//graphics.blendMode = PIXI.BLEND_MODES.ADD;
-// Autodetect, create and append the renderer to the body element
-// renderer = PIXI.autoDetectRenderer(800, 0, { transparent: true, antialias: true });
-// document.getElementById('editorCanvas').appendChild(renderer.view).setAttribute("id", "canvasPixi");
 
-// Create the main stage for your display objects
-// stage = new PIXI.Container();
-
-// ...
-// The rest of the code will go here
-// ...
-
-// Start animating
-// animate();
-// function animate() {
-// 		//Render the stage
-// 		//renderer.render(stage);
-// 		requestAnimationFrame(animate);
-// }
-
-//}
 $(document).ready(function(){
 	//append file saving action
 	// pixiInit();
@@ -293,6 +273,7 @@ $(document).ready(function(){
 							$(".zone").removeClass("selected");
 							$(this).addClass("selected");
 							$("#selectedoptions").html('<span>'+$(this).css("top")+','+$(this).css("left")+'<br>'+$(this).css("width")+','+$(this).css("height")+'</span>,<textarea id="htmledit">'+$(this).html()+'</textarea>');
+							// $("#selectedoptions").append(formTemplates['link']);
 							var pare=$(this);
 							$("#htmledit").on("input change blur",function(){
 								$(".selected").html($("#htmledit").val());

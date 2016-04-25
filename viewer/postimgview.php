@@ -4,10 +4,9 @@
 	Sources:
 		UserPie Version: 1.0
 		http://userpie.com
-
-
 	*/
-	require_once("../models/config.php");
+	require_once("absolutedir.php");
+	require_once("models/config.php");
 	if(isset($_GET['f'])){
 		$pagedisplay=$_GET['f'];
 	}else{
@@ -20,17 +19,11 @@
 	body{
 		margin:0;
 		padding:0;
-		background-image: url("../../webcontents/background.jpg");
+		background-image: url("../webcontents/background.jpg");
 	}
-	#content{
-		width: 87%;
-		left: 6%;
-		position: absolute;
-		top: 40px;
-		box-shadow: 0 20px 20px 2px #000000;
-	}
+
 	<?php
-	include "../generalZoneStyle.css";
+	include "generalZoneStyle.css";
 	?>
 	#liveCanvas>#mainimage{
 	  width:100%;
@@ -44,28 +37,22 @@
 	}
 
 	</style>
-	<script src="http://autotel.co/wp-content/uploads/2015/11/pixi.min_.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $websiteName.' '.$pagedisplay; ?></title>
-<?php require_once("../head_inc.php"); ?>
-
-
+	<?php
+	include_once("inheader.php");
+	?>
 </head>
 <body>
-<?php
-
-require_once("../navbar.php");
-require_once("../postFileManagement.php");
-
-?>
-<div id="content">
-	<div id="liveCanvas">
-		<?php
-
-		echo getCorePost($pagedisplay);
-		?>
+	<?php
+	require_once("navbar.php");
+	require_once("postFileManagement.php");
+	?>
+	<div class="contentWrap">
+		<div id="liveCanvas">
+			<?php
+			echo getPostByUrl($pagedisplay);
+			?>
+		</div>
 	</div>
-</div>
 
 
 

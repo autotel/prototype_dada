@@ -4,79 +4,92 @@
       "name":"first Image",
       "src":"contents/image (1).jpg",
       "frame":"01",
-      "link":"http://google.com",
-      "footer":"this is a awesome test image"
+      "link":"contents/image (1).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (2).jpg",
       "frame":"02",
-      "link":"http://google.com",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (2).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (3).jpg",
       "frame":"02",
-      "link":"http://google.com",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (3).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (4).jpg",
       "frame":"02",
-      "link":"http://google.com",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (4).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (5).jpg",
       "frame":"02",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (5).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (6).jpg",
       "frame":"02",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (6).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (7).jpg",
       "frame":"02",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (7).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (8).jpg",
       "frame":"02",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (8).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (9).jpg",
       "frame":"02",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (9).jpg",
+      "footer":""
     },
     {
       "name":"second Image",
       "src":"contents/image (10).jpg",
       "frame":"02",
-      "footer":"this is a awesome test image two"
+      "link":"contents/image (10).jpg",
+      "footer":""
     }
   ],
   "textContents":[
     {
-      "name":"The history",
-      "contents":"contents/history.html"
+      "name":"Dada info",
+      "contents":"contents/dada_info.html"
+    },{
+      "name":"Activities",
+      "contents":"contents/activities.html"
     },
     {
-      "name":"The other history",
-      "contents":"contents/history.html"
+      "name":"Events",
+      "contents":"contents/events.html"
     },
     {
-      "name":"The other thing",
-      "contents":"contents/history.html"
+      "name":"Join us!",
+      "contents":"contents/join_us.html"
+    },
+    {
+      "name":"Contact",
+      "contents":"contents/contact.html"
     }
   ]
 }

@@ -15,6 +15,7 @@
  *
  * @return string Indented version of the original JSON string.
  */
+ require_once("absolutedir.php");
 function indent($json) {
 	//http://www.daveperrett.com/articles/2008/03/11/format-json-with-php/
     $result      = '';
@@ -58,14 +59,14 @@ function indent($json) {
     return $result;
 }
 
-require_once("../models/config.php");
+require_once("models/config.php");
 if (!isset($loggedInUser)){
 	header('Location: login.php');
 	exit();
 }
 // $hand=fopen('../webcontents/'.str_replace(" ","-", $loggedInUser->display_username)."/".$_GET['post']."/post.txt","w");
 print_r($_POST);
-writeUrlContent("testurl/test",json_encode ($_POST['content']));
+echo writeUrlContent($_POST['file'],json_encode ($_POST['content']));
 
 
 ?>
